@@ -1,0 +1,29 @@
+import pygame as pg
+from pygame.sprite import Sprite
+
+class Bullet(Sprite):
+
+    def __init__(self,ai_game):
+        super().__init__()
+        pg.mixer.init()
+        self.screen = ai_game.screen
+        self.settings = ai_game.settings
+        self.color = self.settings.bullet_color
+
+        # self.image = pg.image.load("Images/laserBullet.bmp")
+        # self.rect = self.image.get_rect()
+        self.rect = pg.Rect(0,0,self.settings.bullet_width,self.settings.bullet_height)
+        self.rect.midtop = ai_game.ship.rect.midtop
+
+        self.y = float(self.rect.y)
+
+        self.bullet_sound = pg.mixer.Sound("Sounds/laser1.wav")
+        self.bullet_sound.set_volume(self.settings.fire_bullet_volume)
+
+
+    def update(self):
+        self.y -= self.settings.bullet_speed
+        self.rect.y = self.y
+
+    def draw_bullet(self):
+        pg.draw.rect(self.screen,self.color,self.rect)
