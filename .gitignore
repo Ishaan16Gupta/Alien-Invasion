@@ -1,4 +1,5 @@
 venv/
+.venv/
 tempCodeRunnerFile.python
 __pycache__/
 .idea/
