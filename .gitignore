@@ -3,3 +3,4 @@ venv/
 tempCodeRunnerFile.python
 __pycache__/
 .idea/
+game_debug.log
